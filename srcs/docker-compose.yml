@@ -8,20 +8,20 @@ services:
     # image: mariadb
     # check for file permission after setup
     volumes:
-      - /home/login/data:/var/lib/mysql
+      - /Users/kklockow/home/kklockow/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: mysql_root_pass
       MYSQL_DATABASE: db_name
       MYSQL_USER: user_name
       MYSQL_PASSWORD: user_pass
-    restart: always
+    # restart: always
 
     # wordpress placeholder
 
   wordpress:
     image: wordpress:php7.3-fpm-alpine
     volumes:
-      - /home/login/data:/var/www/html
+      - /Users/kklockow/home/kklockow/data:/var/www/html
     depends_on:
       - mysql
     environment:
@@ -41,11 +41,11 @@ services:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     volumes:
-      - /home/login/data:/var/www/html
+      - /Users/kklockow/home/kklockow/data:/var/www/html
     # volumes:
     #   - nginx:/etc/nginx/conf.d
     #   - /data/html:/var/www/html
     ports:
-      - 8080:80
+      - 443:443
     links:
       - wordpress
