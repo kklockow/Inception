@@ -3,10 +3,14 @@ FROM debian:bullseye
 
 RUN apt-get update && apt-get install -y mariadb-server
 
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
+COPY /tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-# RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 3306
 
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
 CMD ["mariadbd"]
+
+# CMD ["mysql_install_db --user=mysql --datadir=/var/lib/mysql"]
