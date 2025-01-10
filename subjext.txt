@@ -119,3 +119,9 @@ of the project.
 Inception
 You can store your variables (as a domain name) in an environment
 variable file like .env
+
+
+WORDPRESS_DB_HOST: mysql
+WORDPRESS_DB_NAME: db_name
+WORDPRESS_DB_USER: user_name
+WORDPRESS_DB_PASSWORD: user_pass
