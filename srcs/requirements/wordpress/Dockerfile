@@ -1,7 +1,4 @@
 
-FROM debian:bullseye
+FROM wordpress:php7.3-fpm-alpine
 
-RUN apt-get -y update && \
-    apt-get -y install wordpress
-
-COPY /conf/config-default.php /etc/wordpress/config-default.php
+RUN apt-get update && apt-get install -y mysql-client
