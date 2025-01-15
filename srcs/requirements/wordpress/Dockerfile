@@ -1,4 +1,5 @@
 
-FROM wordpress:php7.3-fpm-alpine
+FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y mysql-client
+RUN apt-get -y update && \
+    apt-get -y install nginx && \

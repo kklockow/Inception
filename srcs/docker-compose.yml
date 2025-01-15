@@ -21,6 +21,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    networks:
+      - db_network
     # wordpress placeholder
 
   wordpress:
@@ -42,8 +44,11 @@ services:
     #   WORDPRESS_TABLE_PREFIX: wp_
     ports:
       - "3306:3306"
-    links:
-      - mysql
+    # links:
+    #   - mysql
+    networks:
+      - wp_network
+      - db_network
     restart: always
 
   nginx:
@@ -56,7 +61,15 @@ services:
     # volumes:
     #   - nginx:/etc/nginx/conf.d
     #   - /data/html:/var/www/html
+    depends_on:
+      - wordpress
     ports:
       - "443:443"
-    links:
-      - wordpress
+    # links:
+    #   - wordpress
+    networks:
+      - wp_network
+
+networks:
+  wp_network:
+  db_network:
