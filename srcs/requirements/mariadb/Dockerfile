@@ -1,6 +1,8 @@
 
 FROM debian:bullseye
 
+# remove netcat when done debugging
+
 RUN apt-get update && apt-get install -y mariadb-server && apt-get install -y netcat
 
 COPY /tools/entrypoint.sh /usr/local/bin/entrypoint.sh

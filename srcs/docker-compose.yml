@@ -7,15 +7,15 @@ services:
       dockerfile: Dockerfile
     # image: mariadb
     # check for file permission after setup
-    # volumes:
-    #   - /Users/kklockow/home/kklockow/data:/var/lib/mysql
+    volumes:
+      - /Users/kklockow/home/kklockow/data:/var/lib/mysql
     env_file: "environment.env"
     # environment:
     #   MYSQL_ROOT_PASSWORD: mysql_root_pass
     #   MYSQL_DATABASE: db_name
     #   MYSQL_USER: user_name
     #   MYSQL_PASSWORD: user_pass
-    # restart: always
+    restart: always
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
       interval: 10s
@@ -26,10 +26,10 @@ services:
     # wordpress placeholder
 
   wordpress:
-    image: wordpress:php7.3-fpm-alpine
-    # build:
-    #   context: ./requirements/wordpress
-    #   dockerfile: Dockerfile
+    # image: wordpress:php7.3-fpm-alpine
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
     volumes:
       - /Users/kklockow/home/kklockow/data:/var/www/html
     depends_on:
@@ -69,6 +69,7 @@ services:
     #   - wordpress
     networks:
       - wp_network
+    restart: always
 
 networks:
   wp_network:

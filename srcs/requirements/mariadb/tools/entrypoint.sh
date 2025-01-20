@@ -3,11 +3,10 @@
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 
-chown -R mysql:mysql /var/lib/mysql
-chmod -R 755 /var/lib/mysql
+# chown -R mysql:mysql /var/lib/mysql
+# chmod -R 755 /var/lib/mysql
 
-echo ${MYSQL_ROOT_PASSWORD}
-# if [ ! -d "/var/lib/mysql/mysql" ]; then
+if [ ! -d "/var/lib/mysql/mysql" ]; then
 
 echo "Running mysql_install_db"
 mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
@@ -34,6 +33,6 @@ mysqladmin -u root -p${MYSQL_ROOT_PASSWORD} shutdown
 wait "$pid"
 echo "MariaDB setup complete."
 
-# fi
+fi
 
 exec "$@"
