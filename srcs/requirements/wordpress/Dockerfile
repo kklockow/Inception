@@ -15,10 +15,16 @@ RUN unzip -n latest.zip -d /var/www/html/
 
 COPY /conf/wp-config.php /var/www/html/wordpress/wp-config.php
 
+COPY /conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+
 RUN chmod +r /var/www/html/wordpress/wp-config.php
+
+RUN chmod +r /etc/php/7.4/fpm/pool.d/www.conf
 
 RUN chown -R www-data:www-data /var/www/html/wordpress/
 
 RUN mkdir -p /run/php
+
+EXPOSE 9000
 
 CMD ["/usr/sbin/php-fpm7.4", "--nodaemonize"]
