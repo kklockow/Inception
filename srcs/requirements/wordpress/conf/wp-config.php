@@ -94,7 +94,7 @@ define( 'WP_DEBUG_LOG', true );
 // define( 'WP_HOME', 'http://yourdomain.com' );
 // define( 'WP_SITEURL', 'http://yourdomain.com' );
 
-define( 'FORCE_SSL_ADMIN', true );
+// define( 'FORCE_SSL_ADMIN', true );
 
 /* That's all, stop editing! Happy publishing. */
 
