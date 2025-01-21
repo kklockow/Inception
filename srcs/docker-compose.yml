@@ -49,7 +49,7 @@ services:
     networks:
       - wp_network
       - db_network
-    restart: always
+    # restart: always
 
   nginx:
     # image: nginx:alpine
