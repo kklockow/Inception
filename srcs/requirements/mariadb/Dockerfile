@@ -19,4 +19,3 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["mariadbd"]
 
-# CMD ["mysql_install_db --user=mysql --datadir=/var/lib/mysql"]
