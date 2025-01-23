@@ -19,6 +19,14 @@ if [ ! -d "/var/www/html/wordpress" ]; then
 
 fi
 
+wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+chmod +x wp-cli.phar
+
+mv wp-cli.phar /usr/local/bin/wp
+
+wp core install --path="/var/www/html/wordpress" --allow-root --url="kklockow.42.fr" --title="inception" --admin_user="$WORDPRESS_DB_USER" --admin_password="$WORDPRESS_DB_PASSWORD" --admin_email="inception@email.com"
+
 echo "done with stuff---------------------"
 
 /usr/sbin/php-fpm7.4 --nodaemonize
