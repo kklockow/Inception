@@ -3,12 +3,7 @@
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 
-# chown -R mysql:mysql /var/lib/mysql
-# chmod -R 755 /var/lib/mysql
-
 echo "Hi im Entrypoint"
-
-#ifclause with different condition maybe
 
 # if [ ! -d "/var/lib/mysql/mysql" ]; then
 
@@ -21,7 +16,7 @@ pid="$!"
 echo "Waiting for MariaDB to be ready..."
 until mysqladmin ping -h localhost --silent; do
     echo "MariaDB not yet available. Retrying..."
-    sleep 2  # Check every 2 seconds
+    sleep 2
 done
 
 mysql --user=root <<-EOSQL

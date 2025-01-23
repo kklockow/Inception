@@ -22,6 +22,3 @@ fi
 echo "done with stuff---------------------"
 
 /usr/sbin/php-fpm7.4 --nodaemonize
-# exec "$@"
-
-# ./usr/sbin/php-fpm7.4
