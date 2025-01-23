@@ -19,6 +19,14 @@ if [ ! -d "/var/www/html/wordpress" ]; then
 
 fi
 
+echo "Waiting for MariaDB to be ready..."
+until mysql -h"$WORDPRESS_DB_HOST" -u"$WORDPRESS_DB_USER" -p"$WORDPRESS_DB_PASSWORD" -e "SHOW DATABASES;" > /dev/null 2>&1; do
+    echo "MariaDB is unavailable - retrying..."
+    sleep 2
+done
+
+echo "MariaDB is ready!"
+
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 chmod +x wp-cli.phar

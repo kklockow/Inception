@@ -13,9 +13,9 @@ mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 mysqld_safe &
 pid="$!"
 
-echo "Waiting for MariaDB to be ready..."
+echo "[CMDB]Waiting for MariaDB to be ready..."
 until mysqladmin ping -h localhost --silent; do
-    echo "MariaDB not yet available. Retrying..."
+    echo "[CMDB]MariaDB not yet available. Retrying..."
     sleep 2
 done
 

@@ -1,7 +1,7 @@
 
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y mariadb-server
+RUN apt-get update && apt-get install -y mariadb-server && apt-get install -y iputils-ping
 
 COPY /tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 
