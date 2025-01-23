@@ -11,7 +11,7 @@ COPY /conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-RUN chmod +r /etc/mysql/conf.d/mysql.cnf
+# RUN chmod +r /etc/mysql/conf.d/mysql.cnf
 
 EXPOSE 3306
 

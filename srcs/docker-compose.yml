@@ -1,4 +1,5 @@
-version: '3'
+version: '3.9'
+
 services:
   mysql:
     #maybe path not correct
@@ -8,7 +9,8 @@ services:
     # image: mariadb
     # check for file permission after setup
     volumes:
-      - /Users/kklockow/home/kklockow/data:/var/lib/mysql
+      - db_volume:/var/lib/mysql
+    #   - /Users/kklockow/home/kklockow/data/wp_volume:/var/lib/mysql
     env_file: "environment.env"
     # environment:
     #   MYSQL_ROOT_PASSWORD: mysql_root_pass
@@ -31,7 +33,8 @@ services:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
     volumes:
-      - /Users/kklockow/home/kklockow/data:/var/www/html
+      - wp_volume:/var/www/html
+    #   - /Users/kklockow/home/kklockow/data/wp_volume:/var/www/html
     depends_on:
       - mysql
     env_file: "environment.env"
@@ -57,7 +60,8 @@ services:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     volumes:
-      - /Users/kklockow/home/kklockow/data:/var/www/html
+      - wp_volume:/var/www/html
+    #   - /Users/kklockow/home/kklockow/data/wp_volume:/var/www/html
     # volumes:
     #   - nginx:/etc/nginx/conf.d
     #   - /data/html:/var/www/html
@@ -70,6 +74,20 @@ services:
     networks:
       - wp_network
     restart: always
+
+volumes:
+  db_volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /Users/kklockow/home/kklockow/data/db_volume
+  wp_volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /Users/kklockow/home/kklockow/data/wp_volume
 
 networks:
   wp_network:
