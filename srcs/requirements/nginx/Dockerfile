@@ -7,12 +7,6 @@ RUN apt-get -y update && \
 
 COPY /conf/nginx.conf /etc/nginx/sites-enabled/default
 
-# COPY /conf/nginx.conf /etc/nginx/nginx.conf
-
-# RUN chown root:www-data /etc/nginx/nginx.conf
-
-# RUN chmod 644 /etc/nginx/nginx.conf
-
 EXPOSE 443/tcp
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
