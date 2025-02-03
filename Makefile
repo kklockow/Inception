@@ -7,7 +7,7 @@ start:
 	@cd srcs && docker compose up -d --build
 
 stop:
-	@cd srcs && docker compose stop
+	@cd srcs && docker compose down
 
 # clean:
 # 	@rm -rf /Users/kklockow/home/kklockow/data/wp_volume

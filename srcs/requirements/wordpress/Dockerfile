@@ -24,5 +24,3 @@ COPY /conf/wp-config.php /tmp/wp-config.php
 RUN chmod +r /tmp/wp-config.php
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
-
