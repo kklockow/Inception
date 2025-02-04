@@ -9,7 +9,3 @@ start:
 stop:
 	@cd srcs && docker compose down
 
-# clean:
-# 	@rm -rf /Users/kklockow/home/kklockow/data/wp_volume
-# 	@rm -rf /Users/kklockow/home/kklockow/data/db_volume
-# 	@cd srcs && docker compose down --volumes --remove-orphans

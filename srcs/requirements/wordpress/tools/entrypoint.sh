@@ -3,8 +3,6 @@
 mkdir -p /run/php
 chown -R www-data:www-data /run/php
 
-# if [ ! -d "/var/www/html/wordpress" ]; then
-
 wget https://wordpress.org/latest.zip
 
 mkdir -p /var/www/html/
@@ -35,8 +33,6 @@ mv wp-cli.phar /usr/local/bin/wp
 wp core install --path="/var/www/html/wordpress" --allow-root --url="kklockow.42.fr" --title="inception" --admin_user="$WORDPRESS_DB_USER" --admin_password="$WORDPRESS_DB_PASSWORD" --admin_email="inception@email.com"
 
 wp user create --path="/var/www/html/wordpress" --allow-root $RANDOM_USER_NAME $RANDOM_USER_EMAIL --user_pass=$RANDOM_USER_PASS --display_name=$RANDOM_USER_NAME
-
-# fi
 
 echo "done with stuff---------------------"
 

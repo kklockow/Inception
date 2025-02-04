@@ -5,8 +5,6 @@ chown -R mysql:mysql /run/mysqld
 
 echo "Hi im Entrypoint"
 
-# if [ ! -d "/var/lib/mysql/mysql" ]; then
-
 echo "Running mysql_install_db"
 mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 
@@ -31,8 +29,6 @@ mysqladmin -u root -p${MYSQL_ROOT_PASSWORD} shutdown
 
 wait "$pid"
 echo "MariaDB setup complete."
-
-# fi
 
 echo "Hi that was me, Entrypoint"
 
