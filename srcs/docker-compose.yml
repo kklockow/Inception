@@ -50,13 +50,13 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/kklockow/data/db_volume
+      device: /Users/kklockow/home/kklockow/data/db_volume
   wp_volume:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/kklockow/data/wp_volume
+      device: /Users/kklockow/home/kklockow/data/wp_volume
 
 networks:
   inception_network:
