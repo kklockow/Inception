@@ -16,7 +16,6 @@ services:
       retries: 3
     networks:
       - inception_network
-    container_name: mariadb
 
   wordpress:
     build:
@@ -30,7 +29,6 @@ services:
     networks:
       - inception_network
     restart: always
-    container_name: wordpress
 
   nginx:
     build:
@@ -45,7 +43,6 @@ services:
     networks:
       - inception_network
     restart: always
-    container_name: nginx
 
 volumes:
   db_volume:
