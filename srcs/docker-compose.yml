@@ -25,7 +25,7 @@ services:
     volumes:
       - wp_volume:/var/www/html
     depends_on:
-      - mysql
+      - mariadb
     env_file: "environment.env"
     networks:
       - inception_network
