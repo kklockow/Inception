@@ -15,7 +15,7 @@ services:
       timeout: 5s
       retries: 3
     networks:
-      - db_network
+      - inception_network
 
   wordpress:
     build:
@@ -27,8 +27,7 @@ services:
       - mysql
     env_file: "environment.env"
     networks:
-      - wp_network
-      - db_network
+      - inception_network
     restart: always
 
   nginx:
@@ -42,7 +41,7 @@ services:
     ports:
       - "443:443"
     networks:
-      - wp_network
+      - inception_network
     restart: always
 
 volumes:
@@ -60,5 +59,4 @@ volumes:
       device: /Users/kklockow/home/kklockow/data/wp_volume
 
 networks:
-  wp_network:
-  db_network:
+  inception_network:
